@@ -17,6 +17,8 @@ class CreateCategorie extends StatefulWidget {
 String name = "", description = "";
 
 class _CreateCategorieState extends State<CreateCategorie> {
+  
+  ///Estilos para los botones y los campos input
   final formKey22 = GlobalKey<FormState>();
   final textFormFieldStyle = OutlineInputBorder(
     borderSide:
@@ -49,6 +51,7 @@ class _CreateCategorieState extends State<CreateCategorie> {
           fontWeight: FontWeight.bold,
           color: Colors.black));
 
+  ///Widget principal de la clase que contiene todos los elementos de la vista
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,6 +61,7 @@ class _CreateCategorieState extends State<CreateCategorie> {
         ));
   }
 
+  /// Widget que contiene las tres partes de la vista, NavBar, Formulario y Botones
   Widget _body(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Container(
       child: Column(
@@ -75,6 +79,7 @@ class _CreateCategorieState extends State<CreateCategorie> {
     );
   }
 
+  /// Widget que contiene el NavBar
   Widget _bodyOne(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Column(children: [
       Wrap(
@@ -112,6 +117,7 @@ class _CreateCategorieState extends State<CreateCategorie> {
     ]);
   }
 
+  /// Widget que contiene el formulario
   Widget _bodyTwo(context, style, spaceBetweenWidth, style2, textFormFieldStyle,
       textFormFieldStyleWrong) {
     return Container(
@@ -134,6 +140,7 @@ class _CreateCategorieState extends State<CreateCategorie> {
     );
   }
 
+  /// Widget que contiene los botones
   Widget _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Column(
       children: [
@@ -177,6 +184,7 @@ class _CreateCategorieState extends State<CreateCategorie> {
     );
   }
 
+  /// Widget que tiene el boton de regreso a la pantalla anterior
   Widget bottonBack() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -196,6 +204,7 @@ class _CreateCategorieState extends State<CreateCategorie> {
     );
   }
 
+  /// Widget que contiene el campo del formulario del nombre
   Widget nombreInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
@@ -228,6 +237,7 @@ class _CreateCategorieState extends State<CreateCategorie> {
     );
   }
 
+  /// Widget que contiene el campo del formulario de la descripcion
   Widget descripcionInput(
       context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
@@ -261,6 +271,7 @@ class _CreateCategorieState extends State<CreateCategorie> {
     );
   }
 
+  /// funcion que se ejecuta cuando se presiona el boton de crear
   void _register() {
     if (formKey22.currentState!.validate()) {
       final data = {
@@ -274,11 +285,11 @@ class _CreateCategorieState extends State<CreateCategorie> {
     }
   }
 
+  /// Funcion encargada de crear el producto en base de datos
   void _queryData(data) {
     dynamic user2 = jsonEncode(data);
     Map<String, dynamic> user = jsonDecode(user2);
     var dataCategorie = Categoria.fromJson(user);
     DB.instance.insertData(dataCategorie);
   }
-
 }

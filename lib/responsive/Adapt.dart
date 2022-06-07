@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:ui';
 
+/// Clase encargada de las dimensiones de la pantalla para hacer responsive la aplicación
 class Adapt {
   static MediaQueryData mediaQuery = MediaQueryData.fromWindow(window);
   static final double _width = mediaQuery.size.width;

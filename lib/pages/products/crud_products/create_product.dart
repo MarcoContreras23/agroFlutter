@@ -1,5 +1,6 @@
-import 'dart:convert';
+// ignore_for_file: deprecated_member_use, avoid_print
 
+import 'dart:convert';
 import 'package:agro2/database/db.dart';
 import 'package:agro2/model/product.dart';
 import 'package:agro2/responsive/Adapt.dart';
@@ -15,6 +16,8 @@ class CreateProducts extends StatefulWidget {
 String name = "", description = "", price = "", quantity = "";
 
 class _CreateProduxtsState extends State<CreateProducts> {
+
+  ///Estilos para los botones y los campos input
   final formKey22 = GlobalKey<FormState>();
   final textFormFieldStyle = OutlineInputBorder(
     borderSide:
@@ -47,6 +50,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
           fontWeight: FontWeight.bold,
           color: Colors.black));
 
+  ///Widget principal de la clase que contiene todos los elementos de la vista
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,23 +60,23 @@ class _CreateProduxtsState extends State<CreateProducts> {
         ));
   }
 
+/// Widget que contiene las tres partes de la vista, NavBar, Formulario y Botones
   Widget _body(context, style, spaceBetween, spaceBetweenWidth, style2) {
-    return Container(
-      child: Column(
-        children: [
-          _bodyOne(context, style, spaceBetween, spaceBetweenWidth, style2),
-          Flexible(
-            flex: 8,
-            child: _bodyTwo(context, style, spaceBetweenWidth, style2,
-                textFormFieldStyle, textFormFieldStyleWrong),
-          ),
-          _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2),
-          spaceBetween,
-        ],
-      ),
+    return Column(
+      children: [
+        _bodyOne(context, style, spaceBetween, spaceBetweenWidth, style2),
+        Flexible(
+          flex: 8,
+          child: _bodyTwo(context, style, spaceBetweenWidth, style2,
+              textFormFieldStyle, textFormFieldStyleWrong),
+        ),
+        _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2),
+        spaceBetween,
+      ],
     );
   }
 
+/// Widget que contiene el NavBar
   Widget _bodyOne(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Column(children: [
       Wrap(
@@ -81,7 +85,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
             padding: EdgeInsets.only(left: Adapt.px(20), top: Adapt.px(60)),
             child: bottonBack(),
           ),
-          Container(
+          SizedBox(
             height: Adapt.hp(20),
             child: Column(
               children: [
@@ -112,6 +116,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
     ]);
   }
 
+  /// Widget que contiene el formulario
   Widget _bodyTwo(context, style, spaceBetweenWidth, style2, textFormFieldStyle,
       textFormFieldStyleWrong) {
     return Container(
@@ -137,13 +142,14 @@ class _CreateProduxtsState extends State<CreateProducts> {
     );
   }
 
+  /// Widget que contiene los botones
   Widget _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2) {
     final snackBar = SnackBar(
-      content: Text('Se creo el producto correctamente'),
-      backgroundColor: Color.fromARGB(255, 252, 252, 252),
+      content: const Text('Se creo el producto correctamente'),
+      backgroundColor: const Color.fromARGB(255, 252, 252, 252),
       action: SnackBarAction(
         label: 'Ir',
-        textColor: Color.fromARGB(255, 10, 10, 10),
+        textColor: const Color.fromARGB(255, 10, 10, 10),
         onPressed: () {
           Navigator.pushReplacementNamed(context, '/cart');
         },
@@ -161,7 +167,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
                     style: TextStyle(
                         fontSize: Adapt.px(22),
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 0, 0, 0))),
+                        color: const Color.fromARGB(255, 0, 0, 0))),
                 onPressed: () {
                   if (formKey22.currentState!.validate()) {
                     setState(() {});
@@ -192,6 +198,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
     );
   }
 
+  /// Widget que tiene el boton de regreso a la pantalla anterior
   Widget bottonBack() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -211,6 +218,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
     );
   }
 
+  /// Widget que contiene el campo del formulario del nombre
   Widget nombreInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
@@ -243,6 +251,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
     );
   }
 
+  /// Widget que contiene el campo del formulario de la descripcion
   Widget descripcionInput(
       context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
@@ -276,6 +285,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
     );
   }
 
+  /// Widget que contiene el campo del formulario del precio
   Widget priceInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
@@ -308,6 +318,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
     );
   }
 
+  /// Widget que contiene el campo del formulario del stock
   Widget quantityInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
@@ -340,6 +351,7 @@ class _CreateProduxtsState extends State<CreateProducts> {
     );
   }
 
+  /// funcion que se ejecuta cuando se presiona el boton de crear
   void _crear() {
     if (formKey22.currentState!.validate()) {
       final data = {
@@ -355,10 +367,11 @@ class _CreateProduxtsState extends State<CreateProducts> {
     }
   }
 
+  /// Funcion encargada de crear el producto en base de datos
   void _queryData(data) {
     dynamic user2 = jsonEncode(data);
     Map<String, dynamic> user = jsonDecode(user2);
-    var dataCategorie = Product.fromJson(user);
-    DB.instance.insertDataProduct(dataCategorie);
+    var dataProduct = Product.fromJson(user);
+    DB.instance.insertDataProduct(dataProduct);
   }
 }

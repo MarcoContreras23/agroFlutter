@@ -10,6 +10,8 @@ class DeleteCategorie extends StatefulWidget {
 }
 
 class _DeleteCategorieState extends State<DeleteCategorie> {
+  
+  ///Widget principal encargado de mostrar la lista de categorias con la opción de eliminar cada categoria
   @override
   Widget build(BuildContext context) {
     return Scaffold(

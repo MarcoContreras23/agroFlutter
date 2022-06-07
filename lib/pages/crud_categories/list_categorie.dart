@@ -10,6 +10,7 @@ class ListCategories extends StatefulWidget {
 }
 
 class _ListCategoriesState extends State<ListCategories> {
+  ///Widget principal que muestra la lista de categorias
   @override
   Widget build(BuildContext context) {
     return Scaffold(
