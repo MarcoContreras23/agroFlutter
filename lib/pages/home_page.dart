@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:agro2/pages/categories.dart';
+import 'package:agro2/pages/landing_page.dart';
 import 'package:agro2/pages/product.dart';
 import 'package:agro2/pages/profile.dart';
 import 'package:agro2/provider/screen_provider.dart';
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             case 1:
               return const ProductPage();
             case 2:
-              return const ProfilePage();
+              return const LandingPage();
             default:
               return const CategoriesPage();
           }

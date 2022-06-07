@@ -6,6 +6,8 @@ import 'package:agro2/pages/crud_categories/list_categorie.dart';
 import 'package:agro2/pages/crud_products/create_product.dart';
 import 'package:agro2/pages/crud_products/list_product.dart';
 import 'package:agro2/pages/home_page.dart';
+import 'package:agro2/pages/landing_page.dart';
+import 'package:agro2/pages/register_page.dart';
 import 'package:agro2/provider/screen_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -40,6 +42,8 @@ class _RoutesState extends State<Routes> {
         initialRoute: '/',
         routes: {
           '/': (context) => HomePage(),
+          '/landing': (context) => LandingPage(),
+          '/registro': (context) => const RegisterPage(),
           '/crearCategoria': (context) => const CreateCategorie(),
           '/crearProductos': (context) => const CreateProducts(),
           '/listarCategoria': (context) => const ListCategories(),
