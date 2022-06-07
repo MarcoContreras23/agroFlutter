@@ -10,6 +10,8 @@ class DeleteProduct extends StatefulWidget {
 }
 
 class _DeleteProductState extends State<DeleteProduct> {
+
+  ///Widget principal encargado de mostrar la lista de productos con la opción de eliminar cada producto
   @override
   Widget build(BuildContext context) {
      return Scaffold(

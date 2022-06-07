@@ -8,6 +8,8 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
+
+  ///Widget principal que contiene todas las opciones para productos
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,7 +22,7 @@ class _ProductPageState extends State<ProductPage> {
               leading: const Icon(Icons.list),
               title: const Text('Ver Productos'),
               onTap: () {
-                Navigator.pushNamed(context, '/listarProductos');
+                Navigator.pushNamed(context, '/listProducts');
                 print("ver productos");
               },
             ),
@@ -56,7 +58,7 @@ class _ProductPageState extends State<ProductPage> {
               leading: const Icon(Icons.delete),
               title: const Text('Eliminar producto'),
               onTap: () {
-                Navigator.pushNamed(context, '/');
+                Navigator.pushNamed(context, '/eliminarProducto');
                 print("eliminar");
               },
             ),

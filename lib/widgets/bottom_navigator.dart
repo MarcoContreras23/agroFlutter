@@ -11,6 +11,7 @@ class BottonNavigator extends StatefulWidget {
 }
 
 class _BottonNavigatorState extends State<BottonNavigator> {
+  ///Widget principal que la barra de navegación inferior con su estilo y animación
   int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {

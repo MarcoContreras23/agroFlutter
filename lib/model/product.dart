@@ -1,5 +1,6 @@
 const String tableDataProduct = 'productos';
 
+///Clase que contiene todos los atributos o campos que tiene la tabla productos
 class DataFieldsProduct {
   static final List<String> values = [id, name, description, price, quantity];
   static const String id = 'id';
@@ -8,7 +9,7 @@ class DataFieldsProduct {
   static const String price = 'price';
   static const String quantity = 'quantity';
 }
-
+///Modelo Product con los atributos, encargado de convertir y retornar la información de la tabla productos en formato json
 class Product {
   int? id;
   String name;
