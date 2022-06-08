@@ -6,7 +6,6 @@ import 'package:agro2/pages/crud_categories/list_categorie.dart';
 import 'package:agro2/pages/home_page.dart';
 import 'package:agro2/pages/landing/login_page.dart';
 import 'package:agro2/pages/landing/register_page.dart';
-import 'package:agro2/pages/listado.dart';
 import 'package:agro2/pages/products/crud_products/delete_product.dart';
 import 'package:agro2/pages/products/home_products.dart';
 import 'package:agro2/pages/products/crud_products/create_product.dart';
@@ -50,7 +49,6 @@ class _RoutesState extends State<Routes> {
           '/crearProductos': (context) => const CreateProducts(),
           '/listarCategoria': (context) => const ListCategories(),
           '/listProducts': (context) => const GroceryStoreHome(),
-          '/listUsuarios': (context) => const listado(),
           '/eliminarCategoria': (context) => const DeleteCategorie(),
           '/eliminarProducto': (context) => const DeleteProduct(),
         },
