@@ -1,7 +1,6 @@
 import 'dart:convert';
-
 import 'package:agro2/database/db.dart';
-import 'package:agro2/model/product.dart';
+import 'package:agro2/model/register_login.dart';
 import 'package:agro2/responsive/Adapt.dart';
 import 'package:flutter/material.dart';
 
@@ -140,17 +139,6 @@ class _CreateProduxtsState extends State<RegisterPage> {
   }
 
   Widget _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2) {
-    final snackBar = SnackBar(
-      content: Text('Se creo el producto correctamente'),
-      backgroundColor: Color.fromARGB(255, 252, 252, 252),
-      action: SnackBarAction(
-        label: 'Ir',
-        textColor: Color.fromARGB(255, 10, 10, 10),
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, '/cart');
-        },
-      ),
-    );
     return Column(
       children: [
         Wrap(
@@ -168,7 +156,6 @@ class _CreateProduxtsState extends State<RegisterPage> {
                   if (formKey22.currentState!.validate()) {
                     setState(() {});
                     _crear();
-                    Scaffold.of(context).showSnackBar(snackBar);
                   } else {
                     print("no valido");
                   }
@@ -204,7 +191,7 @@ class _CreateProduxtsState extends State<RegisterPage> {
         primary: const Color.fromARGB(255, 2, 119, 189),
       ),
       onPressed: () {
-        Navigator.pushReplacementNamed(context, '/landing');
+        Navigator.pushReplacementNamed(context, '/login');
       },
       child: Icon(
         Icons.arrow_back,
@@ -379,10 +366,10 @@ class _CreateProduxtsState extends State<RegisterPage> {
     if (formKey22.currentState!.validate()) {
       final data = {
         'name': name,
-        'correo': email,
-        'documento': document,
-        'celular': phone,
-        'contraseña': password,
+        'email': email,
+        'document': document,
+        'phone': phone,
+        'password': password,
       };
       setState(() {});
       _queryData(data);
@@ -394,7 +381,7 @@ class _CreateProduxtsState extends State<RegisterPage> {
   void _queryData(data) {
     dynamic user2 = jsonEncode(data);
     Map<String, dynamic> user = jsonDecode(user2);
-    var dataCategorie = Product.fromJson(user);
-    DB.instance.insertDataProduct(dataCategorie);
+    var dataRegister = Usuarios.fromJson(user);
+    DB.instance.insertDataUsuarios(dataRegister);
   }
 }

@@ -9,6 +9,7 @@ class DataFieldsProduct {
   static const String price = 'price';
   static const String quantity = 'quantity';
 }
+
 ///Modelo Product con los atributos, encargado de convertir y retornar la información de la tabla productos en formato json
 class Product {
   int? id;

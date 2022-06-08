@@ -1,20 +1,20 @@
 import 'dart:convert';
-
 import 'package:agro2/database/db.dart';
-import 'package:agro2/model/product.dart';
+import 'package:agro2/model/register_login.dart';
 import 'package:agro2/responsive/Adapt.dart';
 import 'package:flutter/material.dart';
 
-class LandingPage extends StatefulWidget {
-  const LandingPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<LandingPage> createState() => _CreateProduxtsState();
+  State<LoginPage> createState() => _CreateProduxtsState();
 }
 
 String email = "", password = "";
+dynamic usuarios;
 
-class _CreateProduxtsState extends State<LandingPage> {
+class _CreateProduxtsState extends State<LoginPage> {
   final formKey22 = GlobalKey<FormState>();
   final textFormFieldStyle = OutlineInputBorder(
     borderSide:
@@ -32,7 +32,7 @@ class _CreateProduxtsState extends State<LandingPage> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       padding: EdgeInsets.symmetric(
           horizontal: Adapt.px(20), vertical: Adapt.px(20)),
-      primary: Color.fromARGB(255, 79, 130, 9),
+      primary: const Color.fromARGB(255, 79, 130, 9),
       textStyle: TextStyle(
           fontSize: Adapt.px(40),
           fontWeight: FontWeight.bold,
@@ -41,35 +41,40 @@ class _CreateProduxtsState extends State<LandingPage> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       padding: EdgeInsets.symmetric(
           horizontal: Adapt.px(20), vertical: Adapt.px(20)),
-      primary: Color.fromARGB(255, 34, 127, 151),
+      primary: const Color.fromARGB(255, 34, 127, 151),
       textStyle: TextStyle(
           fontSize: Adapt.px(40),
           fontWeight: FontWeight.bold,
           color: Colors.black));
 
   @override
+  void initState() {
+    traerUsuarios();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: SafeArea(
-          child: _body(context, style, spaceBetween, spaceBetweenWidth, style2),
-        ));
+        body: _body(context, style, spaceBetween, spaceBetweenWidth, style2),
+      ),
+    );
   }
 
   Widget _body(context, style, spaceBetween, spaceBetweenWidth, style2) {
-    return Container(
-      child: Column(
-        children: [
-          _bodyOne(context, style, spaceBetween, spaceBetweenWidth, style2),
-          Flexible(
-            flex: 8,
-            child: _bodyTwo(context, style, spaceBetweenWidth, style2,
-                textFormFieldStyle, textFormFieldStyleWrong),
-          ),
-          _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2),
-          spaceBetween,
-        ],
-      ),
+    return Column(
+      children: [
+        _bodyOne(context, style, spaceBetween, spaceBetweenWidth, style2),
+        Flexible(
+          flex: 8,
+          child: _bodyTwo(context, style, spaceBetweenWidth, style2,
+              textFormFieldStyle, textFormFieldStyleWrong),
+        ),
+        _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2),
+        spaceBetween,
+      ],
     );
   }
 
@@ -77,7 +82,7 @@ class _CreateProduxtsState extends State<LandingPage> {
     return Column(children: [
       Wrap(
         children: [
-          Container(
+          SizedBox(
             height: Adapt.hp(20),
             child: Column(
               children: [
@@ -133,17 +138,6 @@ class _CreateProduxtsState extends State<LandingPage> {
   }
 
   Widget _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2) {
-    final snackBar = SnackBar(
-      content: Text('Se realizó el login correctamente'),
-      backgroundColor: Color.fromARGB(255, 252, 252, 252),
-      action: SnackBarAction(
-        label: 'Ir',
-        textColor: Color.fromARGB(255, 10, 10, 10),
-        onPressed: () {
-          Navigator.pushReplacementNamed(context, '/cart');
-        },
-      ),
-    );
     return Column(
       children: [
         ElevatedButton(
@@ -157,7 +151,6 @@ class _CreateProduxtsState extends State<LandingPage> {
             if (formKey22.currentState!.validate()) {
               setState(() {});
               _loguear();
-              Scaffold.of(context).showSnackBar(snackBar);
             } else {
               print("no valido");
             }
@@ -255,10 +248,93 @@ class _CreateProduxtsState extends State<LandingPage> {
     }
   }
 
+  Widget alert() {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      backgroundColor: Colors.white,
+      title: Column(
+        children: [
+          Container(
+            child: Image(
+                image: const AssetImage('assets/logos/LogoVacoBlanco.png'),
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: MediaQuery.of(context).size.height * 0.15,
+                fit: BoxFit.cover),
+            margin: const EdgeInsets.only(bottom: 3),
+          ),
+          const Center(
+              child: Text(
+            "Hola",
+            style: TextStyle(
+                fontSize: 36,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 197, 254, 37)),
+          )),
+        ],
+      ),
+      content: SizedBox(
+        height: Adapt.hp(15),
+        child: const SingleChildScrollView(
+          child: Center(
+            child: Text(
+              "Correo o calve incorrecta",
+              style: TextStyle(color: Colors.black),
+              maxLines: 15,
+            ),
+          ),
+        ),
+      ),
+      actions: [
+        Padding(
+          padding: EdgeInsets.all(Adapt.px(10)),
+          child: Center(
+            child: ElevatedButton(
+              style: style,
+              child: Text("aceptar",
+                  style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 0, 0))),
+              onPressed: () {},
+            ),
+          ),
+        ),
+        SizedBox(height: Adapt.hp(1)),
+        Padding(
+          padding: EdgeInsets.all(Adapt.px(10)),
+          child: Center(
+            child: ElevatedButton(
+              style: style,
+              child: Text("cancear",
+                  style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 0, 0))),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  void traerUsuarios() async {
+    usuarios = await DB.instance.readAllDataUsuarios();
+  }
+
   void _queryData(data) {
     dynamic user2 = jsonEncode(data);
     Map<String, dynamic> user = jsonDecode(user2);
-    var dataCategorie = Product.fromJson(user);
-    DB.instance.insertDataProduct(dataCategorie);
+    var dataLogin = Usuarios.fromJson(user);
+    for (var i = 0; i < usuarios.length; i++) {
+      if (usuarios[i].email == (dataLogin.email) &&
+          usuarios[i].password == (dataLogin.password)) {
+        Navigator.of(context).pushReplacementNamed('/');
+      } else {
+        alert();
+      }
+    }
   }
 }
