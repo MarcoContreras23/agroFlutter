@@ -248,78 +248,6 @@ class _CreateProduxtsState extends State<LoginPage> {
     }
   }
 
-  Widget alert() {
-    return AlertDialog(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      backgroundColor: Colors.white,
-      title: Column(
-        children: [
-          Container(
-            child: Image(
-                image: const AssetImage('assets/logos/LogoVacoBlanco.png'),
-                width: MediaQuery.of(context).size.width * 0.5,
-                height: MediaQuery.of(context).size.height * 0.15,
-                fit: BoxFit.cover),
-            margin: const EdgeInsets.only(bottom: 3),
-          ),
-          const Center(
-              child: Text(
-            "Hola",
-            style: TextStyle(
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 197, 254, 37)),
-          )),
-        ],
-      ),
-      content: SizedBox(
-        height: Adapt.hp(15),
-        child: const SingleChildScrollView(
-          child: Center(
-            child: Text(
-              "Correo o calve incorrecta",
-              style: TextStyle(color: Colors.black),
-              maxLines: 15,
-            ),
-          ),
-        ),
-      ),
-      actions: [
-        Padding(
-          padding: EdgeInsets.all(Adapt.px(10)),
-          child: Center(
-            child: ElevatedButton(
-              style: style,
-              child: Text("aceptar",
-                  style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 0, 0, 0))),
-              onPressed: () {},
-            ),
-          ),
-        ),
-        SizedBox(height: Adapt.hp(1)),
-        Padding(
-          padding: EdgeInsets.all(Adapt.px(10)),
-          child: Center(
-            child: ElevatedButton(
-              style: style,
-              child: Text("cancear",
-                  style: const TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 0, 0, 0))),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ),
-        )
-      ],
-    );
-  }
-
   void traerUsuarios() async {
     usuarios = await DB.instance.readAllDataUsuarios();
   }
@@ -333,7 +261,59 @@ class _CreateProduxtsState extends State<LoginPage> {
           usuarios[i].password == (dataLogin.password)) {
         Navigator.of(context).pushReplacementNamed('/');
       } else {
-        alert();
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: Color.fromARGB(255, 231, 231, 233),
+              title: const Text(
+                "Ups",
+                style: TextStyle(
+                  color: Color.fromARGB(255, 0, 0, 0),
+                  shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(1, 0.5),
+                      blurRadius: 1.0,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                    ),
+                  ],
+                ),
+              ),
+              content: SingleChildScrollView(
+                child: ListBody(
+                  children: const [
+                    Text(
+                      "Correo o clave incorrecta",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              actions: [
+                FlatButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40)),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "ACEPTAR",
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 0, 0, 0),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
       }
     }
   }
