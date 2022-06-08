@@ -1,5 +1,6 @@
 import 'package:agro2/pages/categories.dart';
 import 'package:agro2/pages/landing/login_page.dart';
+import 'package:agro2/pages/order/order_page.dart';
 import 'package:agro2/pages/product.dart';
 import 'package:agro2/provider/screen_provider.dart';
 import 'package:agro2/widgets/bottom_navigator.dart';
@@ -29,6 +30,8 @@ class _HomePageState extends State<HomePage> {
               return const CategoriesPage();
             case 1:
               return const ProductPage();
+            case 2:
+              return const OrderPage();
             default:
               return const CategoriesPage();
           }

@@ -25,7 +25,7 @@ class GroceryStoreBloc with ChangeNotifier {
 
   void addProduct(dynamic product) {
     for (GroceryProductItem item in cart) {
-      if (item.product['nombre'] == product['nombre']) {
+      if (item.product.name == product.name) {
         item.increment();
         notifyListeners();
         return;
