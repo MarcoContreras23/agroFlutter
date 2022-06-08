@@ -2,6 +2,12 @@
 
 A new Flutter project.
 
+AgroMarket application for the publication and sale of farm products.
+
+For the execution of the application from the main and it is based on the routes file, where all the routes of the application views are located.
+
+The general documentation of the whole project is located in the doc/bin folder in the index.html file.
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

@@ -4,8 +4,8 @@ import 'package:agro2/pages/crud_categories/create_categorie.dart';
 import 'package:agro2/pages/crud_categories/delete_categorie.dart';
 import 'package:agro2/pages/crud_categories/list_categorie.dart';
 import 'package:agro2/pages/home_page.dart';
-import 'package:agro2/pages/landing_page.dart';
-import 'package:agro2/pages/register_page.dart';
+import 'package:agro2/pages/landing/login_page.dart';
+import 'package:agro2/pages/landing/register_page.dart';
 import 'package:agro2/pages/products/crud_products/delete_product.dart';
 import 'package:agro2/pages/products/home_products.dart';
 import 'package:agro2/pages/products/crud_products/create_product.dart';
@@ -40,10 +40,10 @@ class _RoutesState extends State<Routes> {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: '/',
+        initialRoute: '/login',
         routes: {
-          '/': (context) => HomePage(),
-          '/landing': (context) => LandingPage(),
+          '/': (context) => const HomePage(),
+          '/login': (context) => const LoginPage(),
           '/registro': (context) => const RegisterPage(),
           '/crearCategoria': (context) => const CreateCategorie(),
           '/crearProductos': (context) => const CreateProducts(),

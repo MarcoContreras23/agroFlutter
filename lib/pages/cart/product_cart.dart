@@ -1,17 +1,24 @@
+import 'dart:convert';
+
+import 'package:agro2/database/db.dart';
+import 'package:agro2/model/order.dart';
 import 'package:agro2/model/store_bloc.dart';
 import 'package:agro2/provider/provider_cart.dart';
 import 'package:flutter/material.dart';
 
 class GrocerytoreCart extends StatefulWidget {
-  const GrocerytoreCart({Key? key})
-      : super(key: key);
+  const GrocerytoreCart({Key? key}) : super(key: key);
 
   @override
   State<GrocerytoreCart> createState() => _GrocerytoreCartState();
 }
 
-class _GrocerytoreCartState extends State<GrocerytoreCart> {
+String precio = "";
+String prodcutsString = "";
+List products = [];
+bool state = false;
 
+class _GrocerytoreCartState extends State<GrocerytoreCart> {
   ///Widget principal que contiene todos los widget encargados de pintar la vista del carrito
   @override
   Widget build(BuildContext context) {
@@ -92,7 +99,7 @@ class _GrocerytoreCartState extends State<GrocerytoreCart> {
                       itemCount: bloc.cart.length,
                       itemBuilder: (context, index) {
                         final item = bloc.cart[index];
-                        print(item.product.price);
+                        products.add(item);
                         Image image = Image.asset('assets/logo.png');
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 15.0),
@@ -203,11 +210,42 @@ class _GrocerytoreCartState extends State<GrocerytoreCart> {
                   style: TextStyle(color: Colors.black),
                 ),
               ),
-              onPressed: () => null,
+              onPressed: () => _crear(),
             ),
           ),
         ],
       ),
     );
+  }
+
+  void _crear() {
+    prodcutsString = "";
+    final bloc = GroceryProvider.of(context)?.bloc ?? GroceryStoreBloc();
+    precio = bloc.totalPriceElement().toString();
+    for (var i = 0; i < bloc.cart.length; i++) {
+      if (bloc.cart.length == 1) {
+        prodcutsString = "${products[i].product.name}" + prodcutsString;
+        state = true;
+      }
+      if (bloc.cart.length > 1) {
+        prodcutsString = "${products[i].product.name}," + prodcutsString;
+        state = true;
+      }
+    }
+    final data = {
+      'products': prodcutsString,
+      'price': precio,
+    };
+    setState(() {});
+    if(state){
+    _queryData(data);
+    }
+  }
+
+  void _queryData(data) {
+    dynamic user2 = jsonEncode(data);
+    Map<String, dynamic> user = jsonDecode(user2);
+    var dataRegister = Order.fromJson(user);
+    DB.instance.insertDataOrders(dataRegister);
   }
 }

@@ -22,7 +22,7 @@ class _BottonNavigatorState extends State<BottonNavigator> {
       items: const <Widget>[
         Text("Categorias"),
         Text("Productos"),
-        Text("Perfil"),
+        Text("Pedidos"),
       ],
       color: Colors.white,
       buttonBackgroundColor: Colors.transparent,

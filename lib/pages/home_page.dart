@@ -1,16 +1,14 @@
-import 'dart:convert';
-
 import 'package:agro2/pages/categories.dart';
-import 'package:agro2/pages/landing_page.dart';
+import 'package:agro2/pages/landing/login_page.dart';
+import 'package:agro2/pages/order/order_page.dart';
 import 'package:agro2/pages/product.dart';
-import 'package:agro2/pages/profile.dart';
 import 'package:agro2/provider/screen_provider.dart';
 import 'package:agro2/widgets/bottom_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -33,7 +31,7 @@ class _HomePageState extends State<HomePage> {
             case 1:
               return const ProductPage();
             case 2:
-              return const LandingPage();
+              return const OrderPage();
             default:
               return const CategoriesPage();
           }

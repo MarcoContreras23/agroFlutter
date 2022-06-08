@@ -28,6 +28,7 @@ class _GroceryProductDetailsState extends State<GroceryProductDetails> {
   /// Widgets principal encargado de mostrar la información del producto
   @override
   Widget build(BuildContext context) {
+    print(widget.product.name);
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
