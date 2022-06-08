@@ -9,12 +9,17 @@ class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => _CreateProduxtsState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
 String name = "", email = "", document = "", phone = "", password = "";
 
-class _CreateProduxtsState extends State<RegisterPage> {
+/**
+ * Esta clase es la que se encarga de manejar el registro de usuarios
+ * donde se encuetran los diferentes campos de texto para ingresar los datos
+ * del usuario, para realizar su registro
+ */
+class _RegisterPageState extends State<RegisterPage> {
   final formKey22 = GlobalKey<FormState>();
   final textFormFieldStyle = OutlineInputBorder(
     borderSide:
@@ -47,6 +52,9 @@ class _CreateProduxtsState extends State<RegisterPage> {
           fontWeight: FontWeight.bold,
           color: Colors.black));
 
+/**
+ * Widget encargado de construir el cuerpo de la vista
+ */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,6 +64,12 @@ class _CreateProduxtsState extends State<RegisterPage> {
         ));
   }
 
+/**
+ *  Widget contenedor de los diferentes elementos de la vista
+ * que se encuentra divido en 3 apartados 
+ * (Titulo o encabezado, inputs para formulario, 
+ * botones con funcionalidades implementadas)
+ */
   Widget _body(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Container(
       child: Column(
@@ -73,6 +87,10 @@ class _CreateProduxtsState extends State<RegisterPage> {
     );
   }
 
+/**
+   * Widget encargado de construir el primer apartado de la vista
+   * contiene la imagen de la aplicacion y el titulo de la misma
+   */
   Widget _bodyOne(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Column(children: [
       Wrap(
@@ -112,6 +130,10 @@ class _CreateProduxtsState extends State<RegisterPage> {
     ]);
   }
 
+/**
+ * Widget encargado de construir el segundo apartado de la vista
+ * Contiene los diferentes inputs que se manejan para la solicitud de la información
+ */
   Widget _bodyTwo(context, style, spaceBetweenWidth, style2, textFormFieldStyle,
       textFormFieldStyleWrong) {
     return Container(
@@ -139,6 +161,11 @@ class _CreateProduxtsState extends State<RegisterPage> {
     );
   }
 
+/**
+   * Widget encargado de construir el tercer apartado de la vista
+   * Contiene los botones de acciones que permiten realizar las diferentes solicitudes
+   * al presionar el boton REGISTRARSE, se guarda la infomación en la base de datos
+   */
   Widget _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2) {
     final snackBar = SnackBar(
       content: Text('Se creo el producto correctamente'),
@@ -195,6 +222,9 @@ class _CreateProduxtsState extends State<RegisterPage> {
     );
   }
 
+/**
+ * Widget encargado de construir el boton de retroceso
+ */
   Widget bottonBack() {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -214,6 +244,10 @@ class _CreateProduxtsState extends State<RegisterPage> {
     );
   }
 
+/**
+   * Widget encargado de construir el input de nombre
+   * con sus respectivas configuraciones visuales y funcionalidades
+   */
   Widget nombreInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
@@ -246,6 +280,10 @@ class _CreateProduxtsState extends State<RegisterPage> {
     );
   }
 
+  /**
+   * Widget encargado de construir el input de correo
+   * con sus respectivas configuraciones visuales y funcionalidades
+   */
   Widget correoInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
@@ -278,6 +316,10 @@ class _CreateProduxtsState extends State<RegisterPage> {
     );
   }
 
+  /**
+   * Widget encargado de construir el input de documento
+   * con sus respectivas configuraciones visuales y funcionalidades
+   */
   Widget documentoInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
@@ -310,6 +352,10 @@ class _CreateProduxtsState extends State<RegisterPage> {
     );
   }
 
+  /**
+   * Widget encargado de construir el input de contraseña
+   * con sus respectivas configuraciones visuales y funcionalidades
+   */
   Widget celularInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
@@ -342,6 +388,10 @@ class _CreateProduxtsState extends State<RegisterPage> {
     );
   }
 
+  /**
+   * Widget encargado de construir el input de contraseña
+   * con sus respectivas configuraciones visuales y funcionalidades
+   */
   Widget passwordInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
