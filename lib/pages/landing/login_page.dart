@@ -8,13 +8,17 @@ class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _CreateProduxtsState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 String email = "", password = "";
 dynamic usuarios;
 
-class _CreateProduxtsState extends State<LoginPage> {
+/**
+ * Esta clase es la que se encarga de manejar el login
+ * autenticando al usuario y redirigiendo a la pantalla principal
+ */
+class _LoginPageState extends State<LoginPage> {
   final formKey22 = GlobalKey<FormState>();
   final textFormFieldStyle = OutlineInputBorder(
     borderSide:
@@ -47,6 +51,9 @@ class _CreateProduxtsState extends State<LoginPage> {
           fontWeight: FontWeight.bold,
           color: Colors.black));
 
+/**
+ * Widget encargado de construir el cuerpo de la vista
+ */
   @override
   void initState() {
     traerUsuarios();
@@ -63,6 +70,12 @@ class _CreateProduxtsState extends State<LoginPage> {
     );
   }
 
+/**
+ *  Widget contenedor de los diferentes elementos de la vista
+ * que se encuentra divido en 3 apartados 
+ * (Titulo o encabezado, inputs para formulario, 
+ * botones con funcionalidades implementadas)
+ */
   Widget _body(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Column(
       children: [
@@ -78,6 +91,10 @@ class _CreateProduxtsState extends State<LoginPage> {
     );
   }
 
+  /**
+   * Widget encargado de construir el primer apartado de la vista
+   * contiene la imagen de la aplicacion y el titulo de la misma
+   */
   Widget _bodyOne(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Column(children: [
       Wrap(
@@ -114,6 +131,10 @@ class _CreateProduxtsState extends State<LoginPage> {
     ]);
   }
 
+/**
+ * Widget encargado de construir el segundo apartado de la vista
+ * Contiene los diferentes inputs que se manejan para la solicitud de la información
+ */
   Widget _bodyTwo(context, style, spaceBetweenWidth, style2, textFormFieldStyle,
       textFormFieldStyleWrong) {
     return Container(
@@ -126,6 +147,12 @@ class _CreateProduxtsState extends State<LoginPage> {
           padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 80.0),
           child: Column(
             children: [
+              Text("INICIAR SESIÓN",
+                  style: TextStyle(
+                      fontSize: Adapt.px(35),
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black)),
+              SizedBox(height: Adapt.hp(2)),
               correoInput(context, textFormFieldStyle, textFormFieldStyleWrong),
               spaceBetweenWidth,
               spaceBetween,
@@ -140,6 +167,10 @@ class _CreateProduxtsState extends State<LoginPage> {
     );
   }
 
+  /**
+   * Widget encargado de construir el tercer apartado de la vista
+   * Contiene los botones de acciones que permiten realizar las diferentes solicitudes
+   */
   Widget _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Column(
       children: [
@@ -181,6 +212,10 @@ class _CreateProduxtsState extends State<LoginPage> {
     );
   }
 
+  /**
+   * Widget encargado de construir el input de correo
+   * con sus respectivas configuraciones visuales y funcionalidades
+   */
   Widget correoInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
@@ -212,6 +247,10 @@ class _CreateProduxtsState extends State<LoginPage> {
     );
   }
 
+  /**
+   * Widget encargado de construir el input de contraseña
+   * con sus respectivas configuraciones visuales y funcionalidades
+   */
   Widget passwordInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
