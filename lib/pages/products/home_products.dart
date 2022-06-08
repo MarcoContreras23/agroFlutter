@@ -28,7 +28,8 @@ class _GroceryStoreHomeState extends State<GroceryStoreHome> {
       bloc.changeToNormal();
     }
   }
-/// Metodo encargado de dar las dimensiones a la vista de listar productos
+
+  /// Metodo encargado de dar las dimensiones a la vista de listar productos
   double _getTopForWhithePanel(GroceyState state, Size size) {
     if (state == GroceyState.normal) {
       return -cartBarHeight + kToolbarHeight;
@@ -38,7 +39,7 @@ class _GroceryStoreHomeState extends State<GroceryStoreHome> {
     return 0.0;
   }
 
-/// Metodo encargado de dar las dimensiones a la vista de carrito
+  /// Metodo encargado de dar las dimensiones a la vista de carrito
   double _getTopForBlackPanel(GroceyState state, Size size) {
     if (state == GroceyState.normal) {
       return size.height - cartBarHeight;
@@ -48,7 +49,7 @@ class _GroceryStoreHomeState extends State<GroceryStoreHome> {
     return 0.0;
   }
 
-/// Metodo encargado de dar las dimensiones al AppBar
+  /// Metodo encargado de dar las dimensiones al AppBar
   double _getTopForAppBar(GroceyState state) {
     if (state == GroceyState.normal) {
       return 0.0;
@@ -58,7 +59,7 @@ class _GroceryStoreHomeState extends State<GroceryStoreHome> {
     return 0.0;
   }
 
-/// Widget principal donde se encuentra la vista de listar productos y la vista de carrito
+  /// Widget principal donde se encuentra la vista de listar productos y la vista de carrito
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

@@ -18,18 +18,18 @@ class _CreateProduxtsState extends State<LoginPage> {
   final formKey22 = GlobalKey<FormState>();
   final textFormFieldStyle = OutlineInputBorder(
     borderSide:
-        const BorderSide(color: Color.fromARGB(255, 10, 140, 3), width: 2.0),
-    borderRadius: BorderRadius.circular(30.0),
+        const BorderSide(color: Color.fromARGB(255, 10, 140, 3)),
+    borderRadius: BorderRadius.circular(5),
   );
   final textFormFieldStyleWrong = OutlineInputBorder(
     borderSide:
-        const BorderSide(color: Color.fromARGB(255, 17, 90, 126), width: 2.0),
-    borderRadius: BorderRadius.circular(30.0),
+        const BorderSide(color: Color.fromARGB(255, 17, 90, 126)),
+    borderRadius: BorderRadius.circular(5),
   );
   var spaceBetween = SizedBox(height: Adapt.hp(1));
   var spaceBetweenWidth = SizedBox(width: Adapt.wp(2));
   final ButtonStyle style = ElevatedButton.styleFrom(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       padding: EdgeInsets.symmetric(
           horizontal: Adapt.px(20), vertical: Adapt.px(20)),
       primary: const Color.fromARGB(255, 79, 130, 9),
@@ -38,7 +38,7 @@ class _CreateProduxtsState extends State<LoginPage> {
           fontWeight: FontWeight.bold,
           color: Colors.black));
   final ButtonStyle style2 = ElevatedButton.styleFrom(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       padding: EdgeInsets.symmetric(
           horizontal: Adapt.px(20), vertical: Adapt.px(20)),
       primary: const Color.fromARGB(255, 34, 127, 151),
@@ -128,6 +128,9 @@ class _CreateProduxtsState extends State<LoginPage> {
             children: [
               correoInput(context, textFormFieldStyle, textFormFieldStyleWrong),
               spaceBetweenWidth,
+              spaceBetween,
+              spaceBetween,
+              spaceBetween,
               passwordInput(
                   context, textFormFieldStyle, textFormFieldStyleWrong),
             ],
@@ -140,31 +143,39 @@ class _CreateProduxtsState extends State<LoginPage> {
   Widget _bodyThree(context, style, spaceBetween, spaceBetweenWidth, style2) {
     return Column(
       children: [
-        ElevatedButton(
-          style: style,
-          child: Text("INGRESAR",
-              style: TextStyle(
-                  fontSize: Adapt.px(22),
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white)),
-          onPressed: () {
-            if (formKey22.currentState!.validate()) {
-              setState(() {});
-              _loguear();
-            } else {
-              print("no valido");
-            }
-          },
+        SizedBox(
+          width: Adapt.wp(65), 
+          child: ElevatedButton(
+            style: style,
+            child: Text("INGRESAR",
+                style: TextStyle(
+                    fontSize: Adapt.px(22),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)),
+            onPressed: () {
+              if (formKey22.currentState!.validate()) {
+                setState(() {});
+                _loguear();
+              } else {
+                print("no valido");
+              }
+            },
+          ),
         ),
-        ElevatedButton(
-          style: style2,
-          child: Text("REGISTRARSE",
-              style: TextStyle(
-                  fontSize: Adapt.px(22),
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white)),
-          onPressed: () =>
-              {Navigator.pushReplacementNamed(context, '/registro')},
+        spaceBetween,
+        spaceBetween,
+        SizedBox(
+          width: Adapt.wp(65), 
+          child: ElevatedButton(
+            style: style2,
+            child: Text("REGISTRARSE",
+                style: TextStyle(
+                    fontSize: Adapt.px(22),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)),
+            onPressed: () =>
+                {Navigator.pushReplacementNamed(context, '/registro')},
+          ),
         ),
       ],
     );
@@ -173,7 +184,6 @@ class _CreateProduxtsState extends State<LoginPage> {
   Widget correoInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
-      maxLength: 50,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
@@ -205,7 +215,6 @@ class _CreateProduxtsState extends State<LoginPage> {
   Widget passwordInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
-      maxLength: 50,
       obscureText: true,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(

@@ -199,7 +199,7 @@ class _GrocerytoreCartState extends State<GrocerytoreCart> {
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: RaisedButton(
-              color: const Color.fromARGB(255, 197, 254, 37),
+              color: Colors.blueAccent,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25),
               ),

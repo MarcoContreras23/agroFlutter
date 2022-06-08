@@ -1,7 +1,5 @@
 import 'package:agro2/database/db.dart';
-import 'package:agro2/model/order.dart';
 import 'package:agro2/pages/products/home_products.dart';
-import 'package:agro2/widgets/bar_search.dart';
 import 'package:flutter/material.dart';
 
 class OrderPage extends StatefulWidget {
@@ -35,7 +33,6 @@ class _OrderPageState extends State<OrderPage> {
         SizedBox(
           height: size.height * 0.09,
         ),
-        _bodyParteUno(),
         Flexible(
           child: _listOrder(context),
         ),
@@ -43,19 +40,6 @@ class _OrderPageState extends State<OrderPage> {
     );
   }
 
-  ///Widget que contiene el navBar de la vista, barra de buscar y el boton de regreso
-  Widget _bodyParteUno() {
-    final size = MediaQuery.of(context).size;
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: const[
-          BarSearch(),
-        ],
-      ),
-    );
-  }
 
   ///Widget donde se listan todos los productos existentes
 

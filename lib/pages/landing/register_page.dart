@@ -16,19 +16,17 @@ String name = "", email = "", document = "", phone = "", password = "";
 class _CreateProduxtsState extends State<RegisterPage> {
   final formKey22 = GlobalKey<FormState>();
   final textFormFieldStyle = OutlineInputBorder(
-    borderSide:
-        const BorderSide(color: Color.fromARGB(255, 2, 119, 189), width: 2.0),
-    borderRadius: BorderRadius.circular(30.0),
+    borderSide: const BorderSide(color: Color.fromARGB(255, 2, 119, 189)),
+    borderRadius: BorderRadius.circular(5),
   );
   final textFormFieldStyleWrong = OutlineInputBorder(
-    borderSide:
-        const BorderSide(color: Color.fromARGB(255, 255, 0, 0), width: 2.0),
-    borderRadius: BorderRadius.circular(30.0),
+    borderSide: const BorderSide(color: Color.fromARGB(255, 255, 0, 0)),
+    borderRadius: BorderRadius.circular(5),
   );
   var spaceBetween = SizedBox(height: Adapt.hp(1));
   var spaceBetweenWidth = SizedBox(width: Adapt.wp(2));
   final ButtonStyle style = ElevatedButton.styleFrom(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       padding: EdgeInsets.symmetric(
           horizontal: Adapt.px(20), vertical: Adapt.px(10)),
       primary: Color.fromARGB(255, 79, 130, 9),
@@ -37,7 +35,7 @@ class _CreateProduxtsState extends State<RegisterPage> {
           fontWeight: FontWeight.bold,
           color: Colors.black));
   final ButtonStyle style2 = ElevatedButton.styleFrom(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
       padding: EdgeInsets.symmetric(
           horizontal: Adapt.px(20), vertical: Adapt.px(10)),
       primary: const Color.fromARGB(255, 254, 37, 37),
@@ -124,11 +122,15 @@ class _CreateProduxtsState extends State<RegisterPage> {
           child: Column(
             children: [
               nombreInput(context, textFormFieldStyle, textFormFieldStyleWrong),
+              spaceBetween,
               correoInput(context, textFormFieldStyle, textFormFieldStyleWrong),
+              spaceBetween,
               documentoInput(
                   context, textFormFieldStyle, textFormFieldStyleWrong),
+              spaceBetween,
               celularInput(
                   context, textFormFieldStyle, textFormFieldStyleWrong),
+              spaceBetween,
               passwordInput(
                   context, textFormFieldStyle, textFormFieldStyleWrong),
             ],
@@ -204,7 +206,6 @@ class _CreateProduxtsState extends State<RegisterPage> {
   Widget nombreInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
-      maxLength: 50,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
@@ -236,7 +237,6 @@ class _CreateProduxtsState extends State<RegisterPage> {
   Widget correoInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
-      maxLength: 50,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
@@ -268,7 +268,6 @@ class _CreateProduxtsState extends State<RegisterPage> {
   Widget documentoInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
-      maxLength: 50,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
@@ -300,7 +299,6 @@ class _CreateProduxtsState extends State<RegisterPage> {
   Widget celularInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
-      maxLength: 50,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(
@@ -332,7 +330,6 @@ class _CreateProduxtsState extends State<RegisterPage> {
   Widget passwordInput(context, textFormFieldStyle, textFormFieldStyleWrong) {
     return TextFormField(
       style: const TextStyle(color: Colors.black),
-      maxLength: 50,
       obscureText: true,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(

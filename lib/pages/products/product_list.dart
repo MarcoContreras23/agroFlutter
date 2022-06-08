@@ -15,7 +15,6 @@ class GroceryProductsList extends StatefulWidget {
 }
 
 class _GroceryProductsListState extends State<GroceryProductsList> {
-  
   ///Widget principal donde se contruye la vista de la lista de productos
   @override
   Widget build(BuildContext context) {
@@ -60,103 +59,7 @@ class _GroceryProductsListState extends State<GroceryProductsList> {
           FloatingActionButton(
             backgroundColor: Colors.blueAccent,
             onPressed: () {
-              if (bloc?.cart.isNotEmpty == true) {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      backgroundColor: Colors.blueAccent,
-                      title: const Text(
-                        "Cuidado",
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                          shadows: <Shadow>[
-                            Shadow(
-                              offset: Offset(1, 0.5),
-                              blurRadius: 1.0,
-                              color: Color.fromARGB(255, 0, 0, 0),
-                            ),
-                          ],
-                        ),
-                      ),
-                      content: SingleChildScrollView(
-                        child: ListBody(
-                          children: const [
-                            Text(
-                              "Se eliminaran los productos del carrito",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 0, 0, 0),
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(1, 0.5),
-                                    blurRadius: 1.0,
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      actions: [
-                        FlatButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40)),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "CANCELAR",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 0, 0, 0),
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(1, 0.5),
-                                    blurRadius: 1.0,
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                        FlatButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40)),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
-                          onPressed: () {
-                            Navigator.pop(context);
-                            Navigator.pushReplacementNamed(context, '/');
-                          },
-                          child: const Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              "ACEPTAR",
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 0, 0, 0),
-                                shadows: <Shadow>[
-                                  Shadow(
-                                    offset: Offset(1, 0.5),
-                                    blurRadius: 1.0,
-                                    color: Color.fromARGB(255, 0, 0, 0),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
-                );
-              } else {
-                Navigator.pushReplacementNamed(context, '/');
-              }
+              Navigator.pushReplacementNamed(context, '/');
             },
             child: const Icon(Icons.arrow_back, size: 30, color: Colors.white),
           ),
